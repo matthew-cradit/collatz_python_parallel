@@ -1,6 +1,7 @@
 import time
 import argparse
 import os
+import multiprocessing
 from Mongo_class import Mongo
 from pymongo import MongoClient
 from pprint import pprint
@@ -8,7 +9,7 @@ from pprint import pprint
 #argument information 
 parser = argparse.ArgumentParser( description='collatz conjecture calculation')
 parser.add_argument( '-b', type=int, action='store', required=True,  help='upper bound for collatz calculation')
-
+parser.add_argument('-t', type=int, action='store', required = True, help='number of processes')
 args = parser.parse_args()
 #retrieve database connection information
 mongo_uri = os.getenv('mongo_uri')
@@ -33,6 +34,7 @@ def main():
     m = Mongo(mongo_uri, collatz)
 
     bound = args.b
+    threads = args.t
     #start time 
     start = time.time()
     max_len = collatz(bound)
