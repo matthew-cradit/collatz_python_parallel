@@ -31,12 +31,15 @@ def collatz(bound):
     return max_len
 
 def main():
+    
     m = Mongo(mongo_uri, collatz)
 
     bound = args.b
     threads = args.t
+
     #start time 
     start = time.time()
+    
     max_len = collatz(bound)
     stop = time.time()
 
