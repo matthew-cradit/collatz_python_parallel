@@ -10,7 +10,7 @@ class Mongo:
         self.mongo_uri = mongo_uri 
         self.client = MongoClient(self.mongo_uri)
         self.collection = collection
-        self.db = self.client.collatz
+        self.db = self.client[collection]
 
 
     def insert_doc(self, result):
