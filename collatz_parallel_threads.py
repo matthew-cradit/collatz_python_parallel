@@ -17,7 +17,7 @@ mongo_uri = os.getenv('mongo_uri')
 '''
 method for running main collatz conjecture
 '''
-def collatz(bound, rank, threads):
+def collatz(bound: int, rank: int, threads: int) -> int:
     max_len = 0
     rank += 1
 
