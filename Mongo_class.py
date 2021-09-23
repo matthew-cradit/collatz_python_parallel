@@ -13,9 +13,11 @@ class Mongo:
         self.db = self.client[collection]
 
 
-    def insert_doc(self, result):
+    def insert_doc(self, result:dict) -> str:
         
         signal = self.db.results.insert_one(result)
         pprint(signal.inserted_id)
 
+    def find_doc(self, query: dict) -> list:
 
+        return self.db.results.find(query)
